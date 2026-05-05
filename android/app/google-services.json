@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "647942285589",
+    "project_id": "kanban-board-9e95d",
+    "storage_bucket": "kanban-board-9e95d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647942285589:android:b537022bcfd13c1c77e11c",
+        "android_client_info": {
+          "package_name": "com.example.healginx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTQmfsw7mWIQ15Rq9eQFjr6YvkhkpdQTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647942285589:android:02a5c22800711b6277e11c",
+        "android_client_info": {
+          "package_name": "com.example.task_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTQmfsw7mWIQ15Rq9eQFjr6YvkhkpdQTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
