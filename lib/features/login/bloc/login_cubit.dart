@@ -13,14 +13,19 @@ class LoginCubit extends Cubit<LoginStates> {
     required String email,
     required String password,
   }) async {
-    emit(LoginWithEmailLoading());
 
-    final response = await _loginRepository.loginWithEmail(email: email, password: password);
-    if(response != null) {
-      emit(LoginWithEmailSuccess(loginModel: response));
-    }
-    else {
-      emit(LoginWithEmailFailure(error: response.toString()));
+    try{
+      emit(LoginWithEmailLoading());
+      final response = await _loginRepository.loginWithEmail(email: email, password: password);
+      if(response != null) {
+        emit(LoginWithEmailSuccess(loginModel: response));
+      }
+      else {
+        emit(LoginWithEmailFailure(error: response.toString()));
+      }
+
+    }catch (e){
+      emit(LoginWithEmailFailure(error: e.toString()));
     }
   }
 

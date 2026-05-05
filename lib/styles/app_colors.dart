@@ -26,6 +26,25 @@ class AppColors{
   static const Color textFormFilledColor = Color(0xFFF4F6FA);
 
 
+  // static const background = Color(0xFFF7F8FC);
+  static const cardBg = Colors.white;
+  // static const primary = Color(0xFF3B6FE8);
+  static const primaryLight = Color(0xFFEEF2FD);
+  static const accent = Color(0xFF22C4A0);
+  static const text = Color(0xFF1A1D2E);
+  static const textSecondary = Color(0xFF6B7080);
+  static const border = Color(0xFFE5E8F0);
+  // static const error = Color(0xFFE53E3E);
+  static const stepColors = [
+    Color(0xFF3B6FE8),
+    Color(0xFF7B5CF6),
+    Color(0xFF22C4A0),
+    Color(0xFFF59E0B),
+    Color(0xFFEF4444),
+    Color(0xFF06B6D4),
+  ];
+
+
 
 
   // Custom color palette
@@ -38,6 +57,7 @@ class AppColors{
   static const Color surfaceDim = Color(0xFFC0DFEE);
 
   static const Color primary = Color(0xFF366800);
+  static const Color lightGreen = Color(0xFF558B2F);
   static const Color onPrimary = Color(0xFFFFFFFF);
   static const Color primaryContainer = Color(0xFF4D821D);
   static const Color onPrimaryContainer = Color(0xFFF9FFEC);

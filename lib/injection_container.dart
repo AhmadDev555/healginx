@@ -4,6 +4,8 @@ import 'package:healginx/core/api_client/api_service_interface/i_api_service.dar
 import 'package:healginx/core/navigation_service.dart';
 import 'package:healginx/features/chatBot_Screen/bloc/chatbot_cubit.dart';
 import 'package:healginx/features/chatBot_Screen/data/repositories/chatbot_repository.dart';
+import 'package:healginx/features/health_profile/bloc/health_profile_cubit.dart';
+import 'package:healginx/features/health_profile/data/repositories/health_profile_repository.dart';
 import 'package:healginx/features/login/bloc/login_cubit.dart';
 import 'package:healginx/features/login/data/repositories/login_repository.dart';
 
@@ -17,11 +19,13 @@ Future<void> initDependencies() async {
   sl.registerLazySingleton<ApiService>(() => DioApiService());
 
   sl.registerLazySingleton<ChatbotRepository>(() => ChatbotRepository(apiService: sl()));
+  sl.registerLazySingleton<HealthProfileRepository>(() => HealthProfileRepository());
   sl.registerLazySingleton<LoginRepository>(() => LoginRepository(apiService: sl()));
 
 
 
   sl.registerSingleton<ChatbotCubit>(ChatbotCubit(sl()));
+  sl.registerSingleton<HealthProfileCubit>(HealthProfileCubit(sl()));
   sl.registerSingleton<LoginCubit>(LoginCubit(sl()));
 
 }

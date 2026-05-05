@@ -5,6 +5,7 @@ import 'package:healginx/core/local_cache/shared_preferences.dart';
 import 'package:healginx/core/navigation_service.dart';
 import 'package:healginx/core/widgets/custom_button.dart';
 import 'package:healginx/core/widgets/loading.dart';
+import 'package:healginx/features/home/ui/home.dart';
 import 'package:healginx/features/login/bloc/login_cubit.dart';
 import 'package:healginx/features/login/bloc/login_states.dart';
 import 'package:healginx/features/login/ui/widgets/sing_in_text_field.dart';
@@ -116,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen>
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            'Ready for your shift?',
+                            'Want a Diet plan?',
                             style: theme.textTheme.headlineSmall?.copyWith(
                               color:  AppColors.primary,
                               fontWeight: FontWeight.bold,
@@ -125,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen>
                           ),
                           const SizedBox(height: 8),
                           Text(
-                              'Please sign in with your login credentials to continue your journey.',
+                              'Please sign in with your login credentials to continue.',
                               textAlign: TextAlign.center,
                               style: theme.textTheme.bodyLarge?.copyWith(
                                 color: AppColors.grey,
@@ -202,28 +203,28 @@ class _LoginScreenState extends State<LoginScreen>
                                   const SizedBox(height: 8),
 
                                   // Forgot Password
-                                  Align(
-                                    alignment: Alignment.centerRight,
-                                    child: TextButton(
-                                      onPressed: () {
-                                        // sl<NavigationService>().push(const ForgotPasswordScreen());
-                                      },
-                                      style: TextButton.styleFrom(
-                                        padding: EdgeInsets.zero,
-                                        tapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
-                                      ),
-                                      child: Text(
-                                        'Forgot Password?',
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                          color:  const Color(0xFF3B82F6),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 16),
+                                  // Align(
+                                  //   alignment: Alignment.centerRight,
+                                  //   child: TextButton(
+                                  //     onPressed: () {
+                                  //       // sl<NavigationService>().push(const ForgotPasswordScreen());
+                                  //     },
+                                  //     style: TextButton.styleFrom(
+                                  //       padding: EdgeInsets.zero,
+                                  //       tapTargetSize:
+                                  //       MaterialTapTargetSize.shrinkWrap,
+                                  //     ),
+                                  //     child: Text(
+                                  //       'Forgot Password?',
+                                  //       style: TextStyle(
+                                  //         fontSize: 14,
+                                  //         fontWeight: FontWeight.w500,
+                                  //         color:  const Color(0xFF3B82F6),
+                                  //       ),
+                                  //     ),
+                                  //   ),
+                                  // ),
+                                  const SizedBox(height: 8),
 
                                   CustomButton(
                                     borderRadius: 8,
@@ -413,7 +414,7 @@ class _LoginScreenState extends State<LoginScreen>
       //
       // loginModelData = state.loginModel;
       // if (state.loginModel.data!.authTenants!.length > 1) {
-      //   sl<NavigationService>().pushAndClearStack(LabSelectScreen(model: loginModelData.data));
+        sl<NavigationService>().pushAndClearStack(HomeScreen());
       // } else {
       //   await SharedPreferencesClient.instance.setLabData(
       //       loginModelData.data?.authTenants?.first.key!);

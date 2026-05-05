@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:healginx/core/navigation_service.dart';
 import 'package:healginx/features/chatBot_Screen/bloc/chatbot_cubit.dart';
+import 'package:healginx/features/health_profile/bloc/health_profile_cubit.dart';
 import 'package:healginx/features/login/bloc/login_cubit.dart';
 import 'package:healginx/features/splash/splash_screen.dart';
 import 'package:healginx/injection_container.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ChatbotCubit>(create: (_) => sl()),
+        BlocProvider<HealthProfileCubit>(create: (_) => sl()),
         BlocProvider<LoginCubit>(create: (_) => sl()),
       ],
       child: MaterialApp(

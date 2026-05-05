@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:healginx/core/local_cache/shared_preferences.dart';
 import 'package:healginx/core/navigation_service.dart';
+import 'package:healginx/features/health_profile/ui/health_profile.dart';
 import 'package:healginx/features/home/ui/home.dart';
 import 'package:healginx/features/login/ui/login.dart';
 import 'package:healginx/injection_container.dart';
 import 'package:healginx/styles/app_colors.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,7 +31,8 @@ class _SplashScreenState extends State<SplashScreen>{
     await Future.delayed(const Duration(seconds: 2));
 
     if (isLoggedIn) {
-      sl<NavigationService>().pushAndClearStack(HomeScreen());
+      sl<NavigationService>().pushAndClearStack(HealgenixHomeScreen());
+      // sl<NavigationService>().pushAndClearStack(UserProfileFormScreen());
     } else {
       sl<NavigationService>().push(LoginScreen());
     }
@@ -72,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen>{
             children: [
               Image.asset("assets/images/logo.png"),
               SizedBox(height: 20,),
-              Text("TrueMedIt",style: TextStyle(color: AppColors.white,fontSize: 18),),
+              Text("Healginx",style: TextStyle(color: AppColors.white,fontSize: 18),),
 
             ],
           ),
