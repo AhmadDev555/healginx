@@ -45,7 +45,31 @@ class LoginCubit extends Cubit<LoginStates> {
     }
   }
 
+  Future<void> registerWithEmail({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      emit(RegisterWithEmailLoading());
+      final response = await _loginRepository.registerWithEmail(
+        name: name,
+        email: email,
+        password: password,
+      );
 
-
+      if (response != null) {
+        emit(RegisterWithEmailSuccess(user: response));
+      } else {
+        emit(
+          RegisterWithEmailFailure(
+            error: 'Account creation failed. Please try again',
+          ),
+        );
+      }
+    } catch (e) {
+      emit(RegisterWithEmailFailure(error: e.toString()));
+    }
+  }
 
 }

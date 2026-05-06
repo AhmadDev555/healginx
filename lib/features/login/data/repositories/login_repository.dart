@@ -33,6 +33,7 @@ class LoginRepository {
 
   /// REGISTER (EMAIL + PASSWORD)
   Future<User?> registerWithEmail({
+    required String name,
     required String email,
     required String password,
   }) async {
@@ -41,13 +42,14 @@ class LoginRepository {
         email: email,
         password: password,
       );
+      await credential.user?.updateDisplayName(name.trim());
+      await credential.user?.reload();
 
-      return credential.user;
+      return _auth.currentUser ?? credential.user;
     } on FirebaseAuthException catch (e) {
       throw _handleAuthError(e);
     }
   }
-
   /// GOOGLE LOGIN
   Future<User?> loginWithGoogle() async {
     try {

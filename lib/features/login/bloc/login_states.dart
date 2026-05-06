@@ -32,3 +32,18 @@ class LoginWithGoogleFailure extends LoginStates {
 
   LoginWithGoogleFailure({this.error});
 }
+
+class RegisterWithEmailLoading extends LoginStates {}
+
+class RegisterWithEmailSuccess extends LoginStates {
+  final User user;
+
+  RegisterWithEmailSuccess({required this.user});
+}
+
+class RegisterWithEmailFailure extends LoginStates {
+  final String? error;
+
+  RegisterWithEmailFailure({required this.error});
+}
+

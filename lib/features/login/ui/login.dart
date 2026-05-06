@@ -8,6 +8,7 @@ import 'package:healginx/core/widgets/loading.dart';
 import 'package:healginx/features/home/ui/home.dart';
 import 'package:healginx/features/login/bloc/login_cubit.dart';
 import 'package:healginx/features/login/bloc/login_states.dart';
+import 'package:healginx/features/login/ui/register_screen.dart';
 import 'package:healginx/features/login/ui/widgets/sing_in_text_field.dart';
 import 'package:healginx/injection_container.dart';
 import 'package:healginx/styles/app_colors.dart';
@@ -237,7 +238,31 @@ class _LoginScreenState extends State<LoginScreen>
                                     ),
                                     onPressed: _login,
                                     text: "Login",
-                                  )
+                                  ),
+                                  const SizedBox(height: 18),
+                                  TextButton(
+                                    onPressed: () => sl<NavigationService>().push(const RegisterScreen()),
+                                    child: RichText(
+                                      text: TextSpan(
+                                        style: theme.textTheme.bodyMedium
+                                            ?.copyWith(
+                                          color: AppColors.grey,
+                                        ),
+                                        children: const [
+                                          TextSpan(
+                                            text: "Don't have an account? ",
+                                          ),
+                                          TextSpan(
+                                            text: 'Create Account',
+                                            style: TextStyle(
+                                              color: AppColors.primary,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
 
                                   // Login Button
                                   // SizedBox(
