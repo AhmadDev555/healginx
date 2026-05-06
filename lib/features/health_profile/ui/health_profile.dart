@@ -64,6 +64,7 @@ class _UserProfileFormScreenState extends State<UserProfileFormScreen> {
 
   void _submit() {
     if (_validateAndSyncData()) {
+
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => DataPreviewScreen(data: _data),

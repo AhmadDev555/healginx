@@ -1,0 +1,6 @@
+class ChatBotSingleton {
+  ChatBotSingleton._();
+
+
+
+}
