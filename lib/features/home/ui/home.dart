@@ -461,7 +461,7 @@ class ButtonsSection extends StatelessWidget {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            'Talk to Healgnix AI',
+                            'Talk to Healgenix AI',
                             style: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
