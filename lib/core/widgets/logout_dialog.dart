@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:healginx/constants/app_images.dart';
 import 'package:healginx/core/local_cache/shared_preferences.dart';
+import 'package:healginx/core/navigation_service.dart';
+import 'package:healginx/features/login/ui/login.dart';
 import 'package:healginx/injection_container.dart';
 import 'package:healginx/styles/app_colors.dart';
 import 'package:healginx/styles/font_style.dart';
@@ -84,8 +86,8 @@ class LogoutDialog {
                             _button(
                                 context,
                                 onTap: () async {
-                                 // await SharedPreferencesClient.instance.clearSession();
-                                 // sl<NavigationService>().pushAndClearStack(LoginScreen());
+                                  await SharedPreferencesClient.instance.setLoggedIn(false);
+                                 sl<NavigationService>().pushAndClearStack(LoginScreen());
                                 },
                                 title: "Logout",
                                 isFilled: true

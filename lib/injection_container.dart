@@ -18,8 +18,13 @@ Future<void> initDependencies() async {
 
   sl.registerLazySingleton<ApiService>(() => DioApiService());
 
-  sl.registerLazySingleton<ChatbotRepository>(() => ChatbotRepository(apiService: sl()));
   sl.registerLazySingleton<HealthProfileRepository>(() => HealthProfileRepository());
+  sl.registerLazySingleton<ChatbotRepository>(
+    () => ChatbotRepository(
+      apiService: sl(),
+      healthProfileRepository: sl(),
+    ),
+  );
   sl.registerLazySingleton<LoginRepository>(() => LoginRepository(apiService: sl()));
 
 

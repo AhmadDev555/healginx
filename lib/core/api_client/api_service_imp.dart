@@ -23,7 +23,7 @@ class DioApiService implements ApiService {
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
 
-        if (!options.path.contains(ApiConstants.groqAIModel)) {
+        if (options.path.contains(ApiConstants.groqAIModel)) {
           options.headers.addAll({
             "Authorization": "Bearer ${ApiConstants.groqApiKey}",
           });
@@ -107,12 +107,17 @@ class DioApiService implements ApiService {
         ),
       );
 
-      final decoded = utf8.decode(
-        response.data,
-        allowMalformed: true,
-      );
-      return jsonDecode(decoded);
-      // return response.data;
+      if (response.data is List<int>) {
+        final decoded = utf8.decode(
+          response.data,
+          allowMalformed: true,
+        );
+        return jsonDecode(decoded);
+      }
+      if (response.data is String) {
+        return jsonDecode(response.data);
+      }
+      return response.data;
     } on Exception catch (e) {
       _handleError(e);
     }

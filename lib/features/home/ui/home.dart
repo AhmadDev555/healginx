@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healginx/core/local_cache/shared_preferences.dart';
 import 'package:healginx/core/navigation_service.dart';
+import 'package:healginx/core/widgets/logout_dialog.dart';
+import 'package:healginx/features/chatBot_Screen/ui/chatbot_screen.dart';
 import 'package:healginx/features/health_profile/ui/health_profile.dart';
+import 'package:healginx/features/login/ui/login.dart';
 import 'package:healginx/injection_container.dart';
+import 'package:healginx/styles/app_colors.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -103,37 +108,49 @@ class HeaderWidget extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Stack(
-                alignment: Alignment.center,
+              const Spacer(),
+              Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.eco,
-                    size: 32,
-                    color: const Color(0xFF1D6D00),
-                    weight: 700,
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Icon(
+                        Icons.eco,
+                        size: 32,
+                        color: const Color(0xFF1D6D00),
+                      ),
+                      Positioned(
+                        left: 12,
+                        child: Icon(
+                          Icons.chat_bubble,
+                          size: 20,
+                          color: const Color(0xFF1D6D00),
+                        ),
+                      ),
+                    ],
                   ),
-                  Positioned(
-                    left: 12,
-                    child: Icon(
-                      Icons.chat_bubble,
-                      size: 20,
+                  const SizedBox(width: 4),
+                  Text(
+                    'Healgenix',
+                    style: GoogleFonts.inter(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.24,
                       color: const Color(0xFF1D6D00),
-                      weight: 700,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(width: 4),
-              Text(
-                'Healgenix',
-                style: GoogleFonts.inter(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: -0.24,
-                  color: const Color(0xFF1D6D00),
-                ),
+
+              const Spacer(),
+
+              IconButton(
+                onPressed: () async{
+                  LogoutDialog.show(context);
+                },
+                icon: const Icon(Icons.logout,color: AppColors.primary,),
               ),
             ],
           ),
@@ -406,7 +423,9 @@ class ButtonsSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(24),
               elevation: 0,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  sl<NavigationService>().push(const ChatbotScreen());
+                },
                 borderRadius: BorderRadius.circular(24),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
