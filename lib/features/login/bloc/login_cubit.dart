@@ -41,6 +41,7 @@ class LoginCubit extends Cubit<LoginStates> {
         emit(LoginWithGoogleFailure(error: "Google sign-in cancelled"));
       }
     } catch (e) {
+      print("error to login with google : $e");
       emit(LoginWithGoogleFailure(error: e.toString()));
     }
   }

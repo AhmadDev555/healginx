@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen>
                               ),
                             ),
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 8),
                           Text(
                             'Want a Diet plan?',
                             style: theme.textTheme.headlineSmall?.copyWith(
@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen>
                               fontSize: 28,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 4),
                           Text(
                               'Please sign in with your login credentials to continue.',
                               textAlign: TextAlign.center,
@@ -151,10 +151,9 @@ class _LoginScreenState extends State<LoginScreen>
                         child: RepaintBoundary(
                           child: Container(
                             width: double.infinity,
-                            padding: const EdgeInsets.all(24),
+                            padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 20),
                             decoration: BoxDecoration(
-                              color: (Colors.white)
-                                  .withOpacity(0.7),
+                              color: (Colors.white).withOpacity(0.7),
                               borderRadius: BorderRadius.circular(24),
                               border: Border.all(
                                 color: Colors.white.withOpacity(0.3),
@@ -193,11 +192,11 @@ class _LoginScreenState extends State<LoginScreen>
 
 
                                   ),
-                                  const SizedBox(height: 24),
+                                  const SizedBox(height: 16),
 
                                   // Email Field
                                   _buildEmailField(theme,),
-                                  const SizedBox(height: 16),
+                                  const SizedBox(height: 12),
 
                                   // Password Field
                                   _buildPasswordField(theme,),
@@ -239,7 +238,38 @@ class _LoginScreenState extends State<LoginScreen>
                                     onPressed: _login,
                                     text: "Login",
                                   ),
-                                  const SizedBox(height: 18),
+                                  const SizedBox(height: 12),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Divider(
+                                          color: Colors.grey[300],
+                                          thickness: 1,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12),
+                                        child: Text(
+                                          'or',
+                                          style: theme.textTheme.bodySmall
+                                              ?.copyWith(
+                                            color: AppColors.grey,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Divider(
+                                          color: Colors.grey[300],
+                                          thickness: 1,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 12),
+                                  _buildGoogleButton(theme),
+                                  const SizedBox(height: 8),
                                   TextButton(
                                     onPressed: () => sl<NavigationService>().push(const RegisterScreen()),
                                     child: RichText(
@@ -305,6 +335,54 @@ class _LoginScreenState extends State<LoginScreen>
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGoogleButton(ThemeData theme) {
+    return SizedBox(
+      width: double.infinity,
+      height: 52,
+      child: OutlinedButton(
+        onPressed: _loginWithGoogle,
+        style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.white.withOpacity(0.58),
+          foregroundColor: AppColors.blackGrey,
+          side: BorderSide(color: Colors.grey[200]!),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 24,
+              height: 24,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              child: const Text(
+                'G',
+                style: TextStyle(
+                  color: Color(0xFF4285F4),
+                  fontSize: 17,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              'Continue with Google',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: AppColors.blackGrey,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -427,6 +505,10 @@ class _LoginScreenState extends State<LoginScreen>
     }
   }
 
+  void _loginWithGoogle() {
+    context.read<LoginCubit>().loginWithGoogle();
+  }
+
   void _handleLoginState(BuildContext context, LoginStates state) async {
     if (state is LoginWithEmailLoading) {
       Loading.show(context);
@@ -450,6 +532,17 @@ class _LoginScreenState extends State<LoginScreen>
     } else if (state is LoginWithEmailFailure) {
       Navigator.pop(context);
       context.showErrorBar(content: Text(state.error??""), indicatorColor: AppColors.red);
+    } else if (state is LoginWithGoogleLoading) {
+      Loading.show(context);
+    } else if (state is LoginWithGoogleSuccess) {
+      await SharedPreferencesClient.instance.setLoggedIn(true);
+      sl<NavigationService>().pushAndClearStack(HomeScreen());
+    } else if (state is LoginWithGoogleFailure) {
+      Navigator.pop(context);
+      context.showErrorBar(
+        content: Text(state.error ?? ""),
+        indicatorColor: AppColors.red,
+      );
     }
   }
 
