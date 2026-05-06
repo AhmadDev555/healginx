@@ -12,7 +12,20 @@
           "package_name": "com.example.healginx"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "647942285589-sia7lr1l9m8cg44p4blu6qesqcjs3k76.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healginx",
+            "certificate_hash": "93b0260f5ab564e20940487f59e1c545cb05d12d"
+          }
+        },
+        {
+          "client_id": "647942285589-6tqe6ds3o2m0ad82j0s8pod4ahgnaq0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCTQmfsw7mWIQ15Rq9eQFjr6YvkhkpdQTc"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647942285589-6tqe6ds3o2m0ad82j0s8pod4ahgnaq0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -31,7 +49,12 @@
           "package_name": "com.example.task_management"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "647942285589-6tqe6ds3o2m0ad82j0s8pod4ahgnaq0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCTQmfsw7mWIQ15Rq9eQFjr6YvkhkpdQTc"
@@ -39,7 +62,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647942285589-6tqe6ds3o2m0ad82j0s8pod4ahgnaq0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
