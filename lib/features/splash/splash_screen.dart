@@ -75,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen>{
             children: [
               Image.asset("assets/images/logo.png"),
               SizedBox(height: 20,),
-              Text("Healginx",style: TextStyle(color: AppColors.white,fontSize: 18),),
+              Text("Healgenix",style: TextStyle(color: AppColors.white,fontSize: 18),),
 
             ],
           ),
